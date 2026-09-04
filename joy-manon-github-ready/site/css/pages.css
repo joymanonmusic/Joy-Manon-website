@@ -1,0 +1,313 @@
+html,
+body {
+  overflow-x: hidden;
+}
+.home-only {
+  height: 100svh;
+  overflow: hidden;
+}
+.home-only .artist-hero {
+  height: 100svh;
+  min-height: 0;
+  isolation: isolate;
+}
+.home-only .brand-logo {
+  background: var(--yellow);
+}
+.cursor-dot,
+.cursor-ring {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+}
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  background: var(--yellow);
+  box-shadow: 0 0 14px rgba(254, 206, 41, 0.8);
+}
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid var(--yellow);
+  mix-blend-mode: difference;
+}
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cursor-dot,
+  .cursor-ring {
+    display: block;
+  }
+}
+.abstract-slice {
+  position: absolute;
+  z-index: 1;
+  top: -12%;
+  left: 58%;
+  width: clamp(5rem, 9vw, 9rem);
+  height: 124%;
+  transform: skewX(-7deg);
+  border-left: 1px solid rgba(255, 255, 255, 0.45);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: invert(1) grayscale(1);
+  -webkit-backdrop-filter: invert(1) grayscale(1);
+  mix-blend-mode: difference;
+  opacity: 0.55;
+  animation: slice-drift 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.home-only .artist-hero h1 {
+  z-index: 2;
+}
+.home-socials {
+  position: absolute;
+  z-index: 3;
+  left: 5vw;
+  bottom: 1.5rem;
+  display: flex;
+  gap: 0.45rem;
+}
+.home-socials a {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border: 1px solid rgba(254, 206, 41, 0.55);
+  background: rgba(0, 0, 0, 0.72);
+  color: var(--yellow);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.home-socials svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.home-socials .icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+.home-socials a:hover {
+  background: var(--yellow);
+  color: var(--black);
+}
+@keyframes slice-drift {
+  from {
+    transform: translateX(-1.5vw) skewX(-7deg);
+  }
+  to {
+    transform: translateX(1.5vw) skewX(-7deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .abstract-slice {
+    animation: none;
+  }
+}
+.sub-page {
+  min-height: 100svh;
+  padding: 1.5rem 5vw 5rem;
+  position: relative;
+}
+.sub-back {
+  position: absolute;
+  right: 5vw;
+  top: 1.5rem;
+  text-transform: uppercase;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 800;
+}
+.sub-label {
+  margin: 0;
+  padding-top: 5rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.sub-page h1 {
+  margin: 2rem 0 0;
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 1000;
+  line-height: 0.75;
+  letter-spacing: -0.08em;
+}
+.sub-action {
+  display: inline-block;
+  margin-top: 2rem;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 0.35rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+.music-page {
+  background: var(--blue);
+  color: var(--cream);
+}
+.music-card {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) 1.2fr;
+  gap: 7vw;
+  align-items: center;
+  margin-top: 4rem;
+}
+.music-card > img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.music-card h1 {
+  font-size: clamp(3.5rem, 7vw, 7.5rem);
+}
+.gallery-page {
+  background: var(--black);
+  color: var(--cream);
+}
+.photo-grid {
+  columns: 3;
+  column-gap: 1rem;
+  margin-top: 5rem;
+}
+.photo-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 1rem;
+  break-inside: avoid;
+  filter: saturate(0.55);
+  transition: filter 0.25s ease;
+}
+.photo-grid img:hover {
+  filter: saturate(1);
+}
+.community-page {
+  background: var(--red);
+}
+.community-page h1 span {
+  color: var(--yellow);
+}
+.discord-button {
+  display: inline-block;
+  margin-top: 3rem;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--black);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.discord-button:hover {
+  background: var(--black);
+  color: var(--yellow);
+}
+.community-mail {
+  margin-top: 10rem;
+}
+.community-mail > p {
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.community-mail form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-bottom: 3px solid var(--black);
+}
+.community-mail input,
+.community-mail button {
+  border: 0;
+  background: transparent;
+  padding: 1rem 0;
+  font: 800 1rem Arial;
+  color: var(--black);
+}
+.community-mail input {
+  outline: 0;
+}
+.community-mail button {
+  cursor: pointer;
+}
+.contact-page {
+  background: var(--cream);
+}
+.contact-page h1 {
+  color: var(--red);
+}
+.contact-email {
+  width: min(100%, 62rem);
+  margin-top: 6rem;
+  padding-top: 0.8rem;
+  border-top: 3px solid var(--black);
+}
+.contact-email span {
+  display: block;
+  margin-bottom: 1.8rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.contact-email a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid currentColor;
+  font-size: clamp(1.15rem, 3.4vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+.contact-email b {
+  color: var(--red);
+}
+@media (max-width: 760px) {
+  .home-only .header nav {
+    grid-template-columns: repeat(2, auto);
+  }
+  .home-only .artist-hero h1 {
+    font-size: 26vw;
+  }
+  .abstract-slice {
+    left: 64%;
+    width: 4.5rem;
+  }
+  .home-socials {
+    right: auto;
+    bottom: 1rem;
+    left: 1rem;
+    justify-content: flex-start;
+  }
+  .home-socials a {
+    width: 2.45rem;
+    height: 2.45rem;
+  }
+  .music-card {
+    grid-template-columns: 1fr;
+  }
+  .photo-grid {
+    columns: 1;
+  }
+  .community-mail {
+    margin-top: 7rem;
+  }
+  .sub-page {
+    padding: 1rem 1rem 4rem;
+  }
+  .sub-back {
+    right: 1rem;
+    top: 1rem;
+  }
+  .sub-label {
+    padding-top: 4rem;
+  }
+}
